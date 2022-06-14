@@ -16,6 +16,7 @@
 		37F3F96E285805CC001C3E00 /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3F96D285805CC001C3E00 /* TaskManagerTests.swift */; };
 		37F3F978285805CD001C3E00 /* TaskManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3F977285805CD001C3E00 /* TaskManagerUITests.swift */; };
 		37F3F97A285805CD001C3E00 /* TaskManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3F979285805CD001C3E00 /* TaskManagerUITestsLaunchTests.swift */; };
+		37F3F98928580881001C3E00 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F3F98828580881001C3E00 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		37F3F973285805CD001C3E00 /* TaskManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F3F977285805CD001C3E00 /* TaskManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerUITests.swift; sourceTree = "<group>"; };
 		37F3F979285805CD001C3E00 /* TaskManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		37F3F98828580881001C3E00 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,8 @@
 		37F3F956285805CB001C3E00 /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
+				37F3F98728580867001C3E00 /* ViewModel */,
+				37F3F9862858085F001C3E00 /* View */,
 				37F3F957285805CB001C3E00 /* TaskManagerApp.swift */,
 				37F3F959285805CB001C3E00 /* ContentView.swift */,
 				37F3F95B285805CC001C3E00 /* Assets.xcassets */,
@@ -131,6 +135,21 @@
 				37F3F979285805CD001C3E00 /* TaskManagerUITestsLaunchTests.swift */,
 			);
 			path = TaskManagerUITests;
+			sourceTree = "<group>";
+		};
+		37F3F9862858085F001C3E00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				37F3F98828580881001C3E00 /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		37F3F98728580867001C3E00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +284,7 @@
 			files = (
 				37F3F961285805CC001C3E00 /* Persistence.swift in Sources */,
 				37F3F95A285805CB001C3E00 /* ContentView.swift in Sources */,
+				37F3F98928580881001C3E00 /* Home.swift in Sources */,
 				37F3F964285805CC001C3E00 /* TaskManager.xcdatamodeld in Sources */,
 				37F3F958285805CB001C3E00 /* TaskManagerApp.swift in Sources */,
 			);
