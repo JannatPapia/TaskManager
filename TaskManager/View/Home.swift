@@ -97,7 +97,7 @@ struct Home: View {
                 .padding(.horizontal)
                 .background{
                     Capsule()
-                        .fill(.gray.opacity(0.3))
+                        .fill(.white.opacity(0.3))
                 }
             Spacer()
             
@@ -111,6 +111,48 @@ struct Home: View {
                 }
             }
         }
+            
+            Text(task.title ?? "")
+                .font(.title2.bold())
+                .foregroundColor(.black)
+                .padding(.vertical, 10)
+            
+         
+            
+            HStack(alignment: .bottom, spacing: 0) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .long, time: .omitted))
+                    } icon: {
+                        Image(systemName: "calendar")
+                    }
+                    .font(.caption)
+                    
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                    } icon: {
+                        Image(systemName: "clock")
+                    }
+                    .font(.caption)
+                    
+                }
+                
+                //Ekahn theke shuru korbo eshe frame.......
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if !task.isCompleted{
+                    Button {
+                        
+                    } label: {
+                        Circle()
+                            .strokeBorder(Color.black, lineWidth: 1.5)
+                            .frame(width: 25, height: 25)
+                            .contentShape(Circle())
+                    }
+                }
+            }
+            
+            
         }
         .padding()
         .frame(maxWidth: .infinity)
