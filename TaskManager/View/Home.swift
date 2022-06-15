@@ -80,7 +80,7 @@ struct Home: View {
     func TaskView() -> some View {
         LazyVStack(spacing: 20){
             ForEach(tasks){task in
-                
+                TaskRowView(task: task)
             }
         }
         .padding(.top, 20)
@@ -100,7 +100,23 @@ struct Home: View {
                         .fill(.gray.opacity(0.3))
                 }
             Spacer()
+            
+            //MARK: Edit Button Only for Non Comoleted Tasks
+            if !task.isCompleted{
+                Button{
+                    
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                        .foregroundColor(Color.black)
+                }
+            }
         }
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background{
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(task.color ?? "Yellow"))
         }
     }
     
