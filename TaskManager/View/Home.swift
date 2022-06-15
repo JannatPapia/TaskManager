@@ -86,6 +86,24 @@ struct Home: View {
         .padding(.top, 20)
     }
     
+    //MARK: Task Row View
+    @ViewBuilder
+    func TaskRowView(task: Task) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+        HStack{
+            Text(task.type ?? "")
+                .font(.callout)
+                .padding(.vertical, 5)
+                .padding(.horizontal)
+                .background{
+                    Capsule()
+                        .fill(.gray.opacity(0.3))
+                }
+            Spacer()
+        }
+        }
+    }
+    
     //MARK: Custom Segment Bar
     @ViewBuilder
     func CustomSegmentedBar() -> some View {
