@@ -11,6 +11,7 @@ struct AddNewTask: View {
     @EnvironmentObject var taskModel: TaskViewModel
     //MARK: All Environment Value in one Variable
     @Environment(\.self) var env
+    @Namespace var animation
     var body: some View {
         VStack(spacing: 12){
             Text("Edit Task")
@@ -54,8 +55,113 @@ struct AddNewTask: View {
                 }
                 .padding(.top, 10)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .top)
             .padding(.top, 30)
+            
+            Divider()
+                .padding(.vertical, 10)
+            
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Deadline")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Text(taskModel.taskDeadline.formatted(date: .abbreviated, time: .omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .padding(.top, 8)
+//                TextField("", text: $taskModel.taskTitle)
+//                    .frame(maxWidth: .infinity)
+//                    .padding(.top, 8)
+            }
+            
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .overlay(alignment: .bottomTrailing) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "calendar")
+                        .foregroundColor(.black)
+                }
+            }
+     //       .padding(.top, 10)
+            
+            Divider()
+            
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Title")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                TextField("", text: $taskModel.taskTitle)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 10)
+            }
+            
+
+           .padding(.top, 10)
+            
+            Divider()
+            
+            //MARK: Sample Task Types
+            let taskTypes: [String] = ["Basic", "Urgent", "Important"]
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Type")
+                    .font(.caption)
+                    .foregroundColor(Color.gray)
+                
+                HStack(spacing: 12) {
+                    ForEach(taskTypes, id: \.self){type in
+                        Text(type)
+                            .font(.callout)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(taskModel.taskType == type ? .white : .black)
+                            .background{
+                                if taskModel.taskType == type{
+                                    Capsule()
+                                        .fill(Color.black)
+                                        .matchedGeometryEffect(id: "TYPE", in: animation)
+                                } else {
+                                    Capsule()
+                                        .strokeBorder(Color.black)
+                                }
+                            }
+                            .contentShape(Capsule())
+                            .onTapGesture {
+                                withAnimation{taskModel.taskType = type}
+                            }
+                    }
+                }
+                .padding(.top, 8)
+            }
+            
+            .padding(.vertical, 10)
+            
+            Divider()
+            
+            //MARK: Save Button
+            Button{
+                //MARK: if Success Closing View
+                if taskModel.addTask(contex: env.managedObjectContext) {
+                    env.dismiss()
+                }
+            } label: {
+                Text("Save Task")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .foregroundColor(Color.white)
+                background{
+                    Capsule()
+                        .fill(Color.black)
+                }
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, 10)
+            .disabled(taskModel.taskTitle == "")
+            .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
             
         }
         .frame(maxWidth: .infinity, alignment: .top)

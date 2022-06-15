@@ -35,7 +35,7 @@ struct Home: View {
         .overlay(alignment: .bottom) {
             //MARK: Add Button
             Button {
-                
+                taskModel.openEditTask.toggle()
             } label: {
                 Label {
                     Text("Add Task")
@@ -63,8 +63,13 @@ struct Home: View {
                 .ignoresSafeArea()
             }
         }
+        .fullScreenCover(isPresented: $taskModel.openEditTask) {
+            taskModel.resetTaskData()
+        } content: {
+        AddNewTask()
+            .environmentObject(taskModel)
     }
-    
+    }
     //MARK: Custom Segment Bar
     @ViewBuilder
     func CustomSegmentedBar() -> some View {
@@ -92,9 +97,7 @@ struct Home: View {
             }
         }
         
-    }
-    
-    
+    } 
     
 }
 
