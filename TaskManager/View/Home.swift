@@ -11,6 +11,10 @@ struct Home: View {
     @StateObject var taskModel : TaskViewModel = .init()
     //MARK: Matched Geo,etry Namespace
     @Namespace var animation
+    
+    //MARK: Fetching Task
+    @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: false)], predicate: nil, animation: .easeInOut) var tasks: FetchedResults<Task>
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack{
@@ -70,6 +74,18 @@ struct Home: View {
             .environmentObject(taskModel)
     }
     }
+    
+    //MARK: TaskView
+    @ViewBuilder
+    func TaskView() -> some View {
+        LazyVStack(spacing: 20){
+            ForEach(tasks){task in
+                
+            }
+        }
+        .padding(.top, 20)
+    }
+    
     //MARK: Custom Segment Bar
     @ViewBuilder
     func CustomSegmentedBar() -> some View {
