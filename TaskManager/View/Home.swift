@@ -82,9 +82,12 @@ struct Home: View {
     @ViewBuilder
     func TaskView() -> some View {
         LazyVStack(spacing: 20){
-            ForEach(tasks){task in
+            DynamicFilteredView(currentTab: taskModel.currentTab) { (task: Task) in
                 TaskRowView(task: task)
             }
+//            ForEach(tasks){task in
+//                TaskRowView(task: task)
+//            }
         }
         .padding(.top, 20)
     }
@@ -105,7 +108,7 @@ struct Home: View {
             Spacer()
             
             //MARK: Edit Button Only for Non Comoleted Tasks
-            if !task.isCompleted{
+            if !task.isCompleted && taskModel.currentTab != "Failed"{
                 Button{
                     taskModel.editTask = task
                     taskModel.openEditTask = true
@@ -145,7 +148,7 @@ struct Home: View {
                 //Ekahn theke shuru korbo eshe frame.......
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if !task.isCompleted{
+                if !task.isCompleted && taskModel.currentTab != "Failed"{
                     Button {
                         //MARK: Updating Core Data
                         task.isCompleted.toggle()
@@ -172,7 +175,8 @@ struct Home: View {
     //MARK: Custom Segment Bar
     @ViewBuilder
     func CustomSegmentedBar() -> some View {
-        let tabs = ["Today", "Upcoming", "Task Done"]
+        // In Case if we Missed the task
+        let tabs = ["Today", "Upcoming", "Task Done", "Failed"]
         HStack(spacing: 10){
             ForEach(tabs,id: \.self){ tab in
                 Text(tab)
