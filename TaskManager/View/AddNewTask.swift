@@ -13,14 +13,10 @@ struct AddNewTask: View {
     @Environment(\.self) var env
     @Namespace var animation
     var body: some View {
-        
-        VStack{
-            Text("hello ")
-        }
-//        VStack(spacing: 12){
-//            Text("Edit Task")
-//                .font(.title3.bold())
-//                .frame(maxWidth: .infinity)
+        VStack(spacing: 12){
+            Text("Edit Task")
+                .font(.title3.bold())
+                .frame(maxWidth: .infinity)
 //                .overlay(alignment: .leading) {
 //                    Button {
 //                        env.dismiss()
@@ -30,57 +26,57 @@ struct AddNewTask: View {
 //                            .foregroundColor(.black)
 //                    }
 //                }
-//
+            
 //
 //                    .overlay(alignment: .trailing) {
-//                        Button {
-//                            if let editTask = taskModel.editTask {
-//                                env.managedObjectContext.delete(editTask)
-//                                try? env.managedObjectContext.save()
-//                                env.dismiss()
-//                            }
-////                            env.managedObjectContext.delete(editTask)
-////                            try? env.managedObjectContext?.save()
-//                        } label: {
-//                            Image(systemName: "trash")
-//                                .font(.title3)
-//                                .foregroundColor(.red)
-//                        }
-//                        .opacity(taskModel.editTask == nil ? 0 : 1)
-//                    }
-//
-//
-//            VStack(alignment: .leading, spacing: 12) {
-//                Text("Task Color")
-//                    .font(.caption)
-//                    .foregroundColor(.gray)
-//
-//                // MARK: Sample Card Colors
-//                let colors: [String] = ["Yellow", "Green", "Blue", "Purple", "Red", "Orange"]
-//
-//                HStack(spacing: 15){
-//                    ForEach(colors, id: \.self){color in
-//                        Circle()
-//                            .fill(Color(color))
-//                            .frame(width: 25, height: 25)
-//                            .background{
-//                                if taskModel.taskColor == color{
-//                                    Circle()
-//                                        .strokeBorder(.gray)
-//                                        .padding(-3)
-//                                }
-//                            }
-//                            .contentShape(Circle())
-//                            .onTapGesture {
-//                                taskModel.taskColor = color
-//                            }
-//                    }
-//                }
-//                .padding(.top, 10)
-//            }
-//            .frame(maxWidth: .infinity, alignment: .top)
-//            .padding(.top, 30)
-//
+                        Button {
+                            if let editTask = taskModel.editTask {
+                                env.managedObjectContext.delete(editTask)
+                                try? env.managedObjectContext.save()
+                                env.dismiss()
+                            }
+//                            env.managedObjectContext.delete(editTask)
+//                            try? env.managedObjectContext?.save()
+                        } label: {
+                            Image(systemName: "trash")
+                                .font(.title3)
+                                .foregroundColor(.red)
+                        }
+                        .opacity(taskModel.editTask == nil ? 0 : 1)
+                 //   }
+                
+            
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Color")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+
+                // MARK: Sample Card Colors
+                let colors: [String] = ["Yellow", "Green", "Blue", "Purple", "Red", "Orange"]
+
+                HStack(spacing: 15){
+                    ForEach(colors, id: \.self){color in
+                        Circle()
+                            .fill(Color(color))
+                            .frame(width: 25, height: 25)
+                            .background{
+                                if taskModel.taskColor == color{
+                                    Circle()
+                                        .strokeBorder(.gray)
+                                        .padding(-3)
+                                }
+                            }
+                            .contentShape(Circle())
+                            .onTapGesture {
+                                taskModel.taskColor = color
+                            }
+                    }
+                }
+                .padding(.top, 10)
+            }
+            .frame(maxWidth: .infinity, alignment: .top)
+            .padding(.top, 30)
+            
 //            Divider()
 //                .padding(.vertical, 10)
 //
@@ -103,20 +99,20 @@ struct AddNewTask: View {
 //                        .foregroundColor(.black)
 //                }
 //            }
-//
+            
 //            Divider()
 //
-//            VStack(alignment: .leading, spacing: 12) {
-//                Text("Task Title")
-//                    .font(.caption)
-//                    .foregroundColor(.gray)
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Title")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+
+                TextField("", text: $taskModel.taskTitle)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 8)
+            }
 //
-//                TextField("", text: $taskModel.taskTitle)
-//                    .frame(maxWidth: .infinity)
-//                    .padding(.top, 8)
-//            }
-//
-//
+
 //           .padding(.top, 10)
 //
 //            Divider()
@@ -153,7 +149,7 @@ struct AddNewTask: View {
 //                }
 //                .padding(.top, 8)
 //            }
-//
+            
 //            .padding(.vertical, 10)
 //
 //            Divider()
@@ -180,9 +176,9 @@ struct AddNewTask: View {
 //            .padding(.bottom, 10)
 //            .disabled(taskModel.taskTitle == "")
 //            .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
-//
-//        }
-//        .frame(maxWidth: .infinity, alignment: .top)
+            
+        }
+        .frame(maxWidth: .infinity, alignment: .top)
 //        .padding()
 //        .overlay{
 //            ZStack{
