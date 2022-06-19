@@ -27,7 +27,7 @@ struct AddNewTask: View {
                     }
                 }
             
-                
+//
                     .overlay(alignment: .trailing) {
                         Button {
                             if let editTask = taskModel.editTask {
@@ -50,10 +50,10 @@ struct AddNewTask: View {
                 Text("Task Color")
                     .font(.caption)
                     .foregroundColor(.gray)
-                
+
                 // MARK: Sample Card Colors
                 let colors: [String] = ["Yellow", "Green", "Blue", "Purple", "Red", "Orange"]
-                
+
                 HStack(spacing: 15){
                     ForEach(colors, id: \.self){color in
                         Circle()
@@ -79,12 +79,12 @@ struct AddNewTask: View {
             
             Divider()
                 .padding(.vertical, 10)
-            
+
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Deadline")
                     .font(.caption)
                     .foregroundColor(.gray)
-                
+
                 Text(taskModel.taskDeadline.formatted(date: .abbreviated, time: .omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
                     .font(.callout)
                     .fontWeight(.semibold)
@@ -101,29 +101,29 @@ struct AddNewTask: View {
             }
             
             Divider()
-            
+
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Title")
                     .font(.caption)
                     .foregroundColor(.gray)
-                
+
                 TextField("", text: $taskModel.taskTitle)
                     .frame(maxWidth: .infinity)
                     .padding(.top, 8)
             }
-            
+
 
            .padding(.top, 10)
-            
+
             Divider()
-            
+
             //MARK: Sample Task Types
             let taskTypes: [String] = ["Basic", "Urgent", "Important"]
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Type")
                     .font(.caption)
                     .foregroundColor(Color.gray)
-                
+
                 HStack(spacing: 12) {
                     ForEach(taskTypes, id: \.self){type in
                         Text(type)
@@ -149,11 +149,10 @@ struct AddNewTask: View {
                 }
                 .padding(.top, 8)
             }
-            
             .padding(.vertical, 10)
-            
+
             Divider()
-            
+
             //MARK: Save Button
             Button{
                 //MARK: if Success Closing View
@@ -167,7 +166,7 @@ struct AddNewTask: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
                     .foregroundColor(Color.white)
-                background{
+                    .background{
                     Capsule()
                         .fill(Color.black)
                 }
@@ -189,7 +188,7 @@ struct AddNewTask: View {
                     onTapGesture{
                         taskModel.showDatePicker = false
                     }
-                    
+
                     // MARK: Disabling Past Dates
                     DatePicker.init("", selection: $taskModel.taskDeadline, in: Date.now...Date.distantFuture)
                         .datePickerStyle(.graphical)
