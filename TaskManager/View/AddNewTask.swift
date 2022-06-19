@@ -77,20 +77,20 @@ struct AddNewTask: View {
             .frame(maxWidth: .infinity, alignment: .top)
             .padding(.top, 30)
             
-//            Divider()
-//                .padding(.vertical, 10)
-//
-//            VStack(alignment: .leading, spacing: 12) {
-//                Text("Task Deadline")
-//                    .font(.caption)
-//                    .foregroundColor(.gray)
-//
-//                Text(taskModel.taskDeadline.formatted(date: .abbreviated, time: .omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
-//                    .font(.callout)
-//                    .fontWeight(.semibold)
-//                    .padding(.top, 8)
-//            }
-//            .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+                .padding(.vertical, 10)
+
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Deadline")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+
+                Text(taskModel.taskDeadline.formatted(date: .abbreviated, time: .omitted) + ", " + taskModel.taskDeadline.formatted(date: .omitted, time: .shortened))
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .padding(.top, 8)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
 //            .overlay(alignment: .bottomTrailing) {
 //                Button {
 //                    taskModel.showDatePicker.toggle()
@@ -100,8 +100,8 @@ struct AddNewTask: View {
 //                }
 //            }
             
-//            Divider()
-//
+            Divider()
+
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Title")
                     .font(.caption)
@@ -111,49 +111,48 @@ struct AddNewTask: View {
                     .frame(maxWidth: .infinity)
                     .padding(.top, 8)
             }
-//
 
-//           .padding(.top, 10)
-//
-//            Divider()
-//
-//            //MARK: Sample Task Types
-//            let taskTypes: [String] = ["Basic", "Urgent", "Important"]
-//            VStack(alignment: .leading, spacing: 12) {
-//                Text("Task Type")
-//                    .font(.caption)
-//                    .foregroundColor(Color.gray)
-//
-//                HStack(spacing: 12) {
-//                    ForEach(taskTypes, id: \.self){type in
-//                        Text(type)
-//                            .font(.callout)
-//                            .padding(.vertical, 8)
-//                            .frame(maxWidth: .infinity)
-//                            .foregroundColor(taskModel.taskType == type ? .white : .black)
-//                            .background{
-//                                if taskModel.taskType == type{
-//                                    Capsule()
-//                                        .fill(Color.black)
-//                                        .matchedGeometryEffect(id: "TYPE", in: animation)
-//                                } else {
-//                                    Capsule()
-//                                        .strokeBorder(Color.black)
-//                                }
-//                            }
-//                            .contentShape(Capsule())
-//                            .onTapGesture {
-//                                withAnimation{taskModel.taskType = type}
-//                            }
-//                    }
-//                }
-//                .padding(.top, 8)
-//            }
-            
-//            .padding(.vertical, 10)
-//
-//            Divider()
-//
+
+           .padding(.top, 10)
+
+            Divider()
+
+            //MARK: Sample Task Types
+            let taskTypes: [String] = ["Basic", "Urgent", "Important"]
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Task Type")
+                    .font(.caption)
+                    .foregroundColor(Color.gray)
+
+                HStack(spacing: 12) {
+                    ForEach(taskTypes, id: \.self){type in
+                        Text(type)
+                            .font(.callout)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(taskModel.taskType == type ? .white : .black)
+                            .background{
+                                if taskModel.taskType == type{
+                                    Capsule()
+                                        .fill(Color.black)
+                                        .matchedGeometryEffect(id: "TYPE", in: animation)
+                                } else {
+                                    Capsule()
+                                        .strokeBorder(Color.black)
+                                }
+                            }
+                            .contentShape(Capsule())
+                            .onTapGesture {
+                                withAnimation{taskModel.taskType = type}
+                            }
+                    }
+                }
+                .padding(.top, 8)
+            }
+            .padding(.vertical, 10)
+
+            Divider()
+
 //            //MARK: Save Button
 //            Button{
 //                //MARK: if Success Closing View
@@ -179,28 +178,28 @@ struct AddNewTask: View {
             
         }
         .frame(maxWidth: .infinity, alignment: .top)
-//        .padding()
-//        .overlay{
-//            ZStack{
-//                if taskModel.showDatePicker{
-//                    Rectangle()
-//                        .fill(.ultraThinMaterial)
-//                        .ignoresSafeArea()
-//                    onTapGesture{
-//                        taskModel.showDatePicker = false
-//                    }
-//
-//                    // MARK: Disabling Past Dates
-//                    DatePicker.init("", selection: $taskModel.taskDeadline, in: Date.now...Date.distantFuture)
-//                        .datePickerStyle(.graphical)
-//                        .labelsHidden()
-//                        .padding()
-//                        .background(.white,in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-//                        .padding()
-//                }
-//            }
-//            .animation(.easeInOut, value: taskModel.showDatePicker)
-//        }
+        .padding()
+        .overlay{
+            ZStack{
+                if taskModel.showDatePicker{
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .ignoresSafeArea()
+                    onTapGesture{
+                        taskModel.showDatePicker = false
+                    }
+
+                    // MARK: Disabling Past Dates
+                    DatePicker.init("", selection: $taskModel.taskDeadline, in: Date.now...Date.distantFuture)
+                        .datePickerStyle(.graphical)
+                        .labelsHidden()
+                        .padding()
+                        .background(.white,in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .padding()
+                }
+            }
+            .animation(.easeInOut, value: taskModel.showDatePicker)
+        }
     }
 }
 
