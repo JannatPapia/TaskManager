@@ -153,28 +153,28 @@ struct AddNewTask: View {
 
             Divider()
 
-//            //MARK: Save Button
-//            Button{
-//                //MARK: if Success Closing View
-//                if taskModel.addTask(contex: env.managedObjectContext) {
-//                    env.dismiss()
-//                }
-//            } label: {
-//                Text("Save Task")
-//                    .font(.callout)
-//                    .fontWeight(.semibold)
-//                    .frame(maxWidth: .infinity)
-//                    .padding(.vertical, 12)
-//                    .foregroundColor(Color.white)
-//                background{
-//                    Capsule()
-//                        .fill(Color.black)
-//                }
-//            }
-//            .frame(maxHeight: .infinity, alignment: .bottom)
-//            .padding(.bottom, 10)
-//            .disabled(taskModel.taskTitle == "")
-//            .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
+            //MARK: Save Button
+            Button{
+                //MARK: if Success Closing View
+                if taskModel.addTask(contex: env.managedObjectContext) {
+                    env.dismiss()
+                }
+            } label: {
+                Text("Save Task")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .foregroundColor(Color.white)
+                    .background{
+                    Capsule()
+                        .fill(Color.black)
+                }
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, 10)
+            .disabled(taskModel.taskTitle == "")
+            .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
             
         }
         .frame(maxWidth: .infinity, alignment: .top)
