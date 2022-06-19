@@ -17,18 +17,18 @@ struct AddNewTask: View {
             Text("Edit Task")
                 .font(.title3.bold())
                 .frame(maxWidth: .infinity)
-//                .overlay(alignment: .leading) {
-//                    Button {
-//                        env.dismiss()
-//                    } label: {
-//                        Image(systemName: "arrow.left")
-//                            .font(.title3)
-//                            .foregroundColor(.black)
-//                    }
-//                }
+                .overlay(alignment: .leading) {
+                    Button {
+                        env.dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .font(.title3)
+                            .foregroundColor(.black)
+                    }
+                }
             
 //
-//                    .overlay(alignment: .trailing) {
+                    .overlay(alignment: .trailing) {
                         Button {
                             if let editTask = taskModel.editTask {
                                 env.managedObjectContext.delete(editTask)
@@ -43,7 +43,7 @@ struct AddNewTask: View {
                                 .foregroundColor(.red)
                         }
                         .opacity(taskModel.editTask == nil ? 0 : 1)
-                 //   }
+                    }
                 
             
             VStack(alignment: .leading, spacing: 12) {
@@ -91,14 +91,14 @@ struct AddNewTask: View {
                     .padding(.top, 8)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-//            .overlay(alignment: .bottomTrailing) {
-//                Button {
-//                    taskModel.showDatePicker.toggle()
-//                } label: {
-//                    Image(systemName: "calendar")
-//                        .foregroundColor(.black)
-//                }
-//            }
+            .overlay(alignment: .bottomTrailing) {
+                Button {
+                    taskModel.showDatePicker.toggle()
+                } label: {
+                    Image(systemName: "calendar")
+                        .foregroundColor(.black)
+                }
+            }
             
             Divider()
 
